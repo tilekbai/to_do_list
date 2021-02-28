@@ -11,10 +11,15 @@ def problem_view(request):
     problem_id = request.GET.get('id')
     problems = Problem.objects.get(id = problem_id)
     return render(request, 'problem_view.html', context={'problems': problems})
+
+def remove_problem_view(request):
+    problem_id = request.GET.get('id')
+    problems = Problem.objects.get(id = problem_id).delete()
+    return render(request, 'remove_problem.html')
+    
+
 def add_problem_view(request):
-    """
-    Представление для создания статьи
-    """
+    
     if request.method == "GET":
         return render(request, 'add_problem.html')
     elif request.method == "POST": 
@@ -27,5 +32,5 @@ def add_problem_view(request):
             status=status,
             dead_line=dead_line
         )
-
-        return render(request, 'problem_view.html', context={'problem': problem})
+        context={'problem': problem}
+        return render(request, 'problem_view.html', context)

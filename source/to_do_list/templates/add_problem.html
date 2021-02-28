@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +13,12 @@
     {% csrf_token %}
     <label>Problem:</label><br/>
     <input type="text" name="description"/><br/>
-    <label>Status:</label><br/>
-    <textarea name="status"></textarea><br/>
+    <label>Status:</label>
+    <select name="status">
+        <option value="new">новая</option>
+        <option value="in_progress">в процессе</option>
+        <option value="done">сделано</option>       
+    </select><br/>
     <label>Dead line:</label><br/>
     <input type="date" name="dead_line"/><br/>
     <br/>
