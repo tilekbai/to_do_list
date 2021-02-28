@@ -1,10 +1,11 @@
 from django.db import models
+status_choice = [("new", "Новая"), ("in_progress", "В процессе"), ("done", "Сделано")]
 
 # Create your models here.
 
 class Problem(models.Model):
     description = models.TextField(max_length=3000, null=False)
-    status = models.CharField(max_length=50, null=False, default="New")
+    status = models.CharField(max_length=30, choices=status_choice, null=False, default="new")
     dead_line = models.DateField()
 
     class Meta:
