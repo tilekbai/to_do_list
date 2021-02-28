@@ -10,4 +10,4 @@ def index_view(request):
 def problem_view(request):
     problem_id = request.GET.get('id')
     problems = Problem.objects.get(id = problem_id)
-    return render(request, 'problem_view.html', context={'problem': problem})
+    return render(request, 'problem_view.html', context={'problems': problems})
