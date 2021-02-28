@@ -27,10 +27,9 @@ def add_problem_view(request):
         status = request.POST.get("status")
         dead_line = request.POST.get("dead_line")
 
-        problem = Problem.objects.create(
+        problems = Problem.objects.create(
             description=description,
             status=status,
             dead_line=dead_line
         )
-        context={'problem': problem}
-        return render(request, 'problem_view.html', context)
+        return render(request, 'problem_view.html', context={'problems':problems})
