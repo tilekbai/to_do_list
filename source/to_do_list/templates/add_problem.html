@@ -12,7 +12,7 @@
 <form action="/add/" method="post">
     {% csrf_token %}
     <label>Problem:</label><br/>
-    <input type="text" name="description"/><br/>
+    <input type="text" name="description" required/><br/>
     <label>Detailed Description:</label><br/>
     <input type="text" name="detailed_description"/><br/>
     <label>Status:</label>
@@ -21,8 +21,8 @@
         <option value="in_progress">в процессе</option>
         <option value="done">сделано</option>       
     </select><br/>
-    <label>Dead line:</label><br/>
-    <input type="date" name="dead_line"/><br/>
+    <label>Deadline:</label><br/>
+    <input type="date" name="dead_line" required/><br/>
     <br/>
     <input type="submit" value="Add problem"/>
 </form>
