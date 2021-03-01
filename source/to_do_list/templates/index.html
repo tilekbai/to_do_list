@@ -20,7 +20,7 @@
     {% endif %}
  
     {% for problem in problems %}
-        <p>{{ problem.description }}: <a href="/problem/{{ problem.id }}/">открыть задачу</a><a href="/remove/problem/{{ problem.id }}" style="margin-left:20px">удалить задачу</a></p>
+        <p>{{ problem.description }}: <a href="{% url 'problem-view' problem.id %}">открыть задачу</a><a href="{% url 'remove-problem' problem.id %}" style="margin-left:20px">удалить задачу</a></p>
     {% endfor %}
 
 </div>
