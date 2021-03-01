@@ -13,9 +13,8 @@ def problem_view(request, pk):
     problems = Problem.objects.get(id = pk)
     return render(request, 'problem_view.html', context={'problems': problems})
 
-def remove_problem_view(request):
-    problem_id = request.GET.get('id')
-    problems = Problem.objects.get(id = problem_id).delete()
+def remove_problem_view(request, pk):
+    problems = Problem.objects.get(id = pk).delete()
     return render(request, 'remove_problem.html')
     
 
@@ -35,4 +34,4 @@ def add_problem_view(request):
             status=status,
             dead_line=dead_line
         )
-        return HttpResponseRedirect(f'/problem/{problems.id}/')
+        return HttpResponseRedirect(reverse('problem-view', kwargs={'pk': problems.id}))

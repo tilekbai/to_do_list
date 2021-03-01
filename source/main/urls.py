@@ -22,5 +22,5 @@ urlpatterns = [
     path('', index_view, name='problem-list'),
     path('problem/<int:pk>/', problem_view, name='problem-view'),
     path('add/', add_problem_view, name='problem-add'),
-    path('remove/', remove_problem_view),
+    path('remove/problem/<int:pk>', remove_problem_view, name='remove-problem'),
 ]
