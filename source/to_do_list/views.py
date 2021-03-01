@@ -24,11 +24,13 @@ def add_problem_view(request):
         return render(request, 'add_problem.html')
     elif request.method == "POST": 
         description = request.POST.get("description")
+        detailed_description = request.POST.get("detailed_description")
         status = request.POST.get("status")
         dead_line = request.POST.get("dead_line")
 
         problems = Problem.objects.create(
             description=description,
+            detailed_description=detailed_description,
             status=status,
             dead_line=dead_line
         )
