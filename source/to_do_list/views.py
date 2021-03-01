@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from to_do_list.models import Problem
 
 # Create your views here.
@@ -7,9 +9,8 @@ def index_view(request):
     problems = Problem.objects.all()
     return render(request, 'index.html', context={'problems': problems})
 
-def problem_view(request):
-    problem_id = request.GET.get('id')
-    problems = Problem.objects.get(id = problem_id)
+def problem_view(request, pk):
+    problems = Problem.objects.get(id = pk)
     return render(request, 'problem_view.html', context={'problems': problems})
 
 def remove_problem_view(request):
@@ -34,4 +35,4 @@ def add_problem_view(request):
             status=status,
             dead_line=dead_line
         )
-        return render(request, 'problem_view.html', context={'problems':problems})
+        return HttpResponseRedirect(f'/problem/{problems.id}/')

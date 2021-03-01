@@ -19,8 +19,8 @@ from to_do_list.views import index_view,problem_view, add_problem_view, remove_p
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_view),
-    path('problem/', problem_view),
-    path('add/', add_problem_view),
+    path('', index_view, name='problem-list'),
+    path('problem/<int:pk>/', problem_view, name='problem-view'),
+    path('add/', add_problem_view, name='problem-add'),
     path('remove/', remove_problem_view),
 ]
